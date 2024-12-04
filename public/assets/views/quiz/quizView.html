@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Challenge</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./assets/styles/quiz.css">
+</head>
+<body>
+    <!--Navigation bar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="/">Quiz System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!--Navigation links-->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto" id="navItems">
+                    <!-- Navigation items will be added by JS-->
+                </ul>
+            </div>
+        </div> 
+    </nav>
+    <!--Main container-->
+    <div class="container mt-5">
+        <!--Progress bar and a timer -->
+        <div class="quiz-header">
+            <div class="progress-info">
+                <!--Progress bar-->
+                <div class="progress" style="height: 10px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" id="progressBar" style="width: 0%"></div>
+                </div>
+                <!-- Question number and timer block-->
+                <div class="d-flex justify-content-between mt-2">
+                    <!--Current question number-->
+                    <span id="questionNumber" class="badge bg-primary">Question 1/10</span>
+                    <!--Set a Timer-->
+                    <div class="timer-container">
+                        <i class="fas fa-clock"></i>
+                        <span id="timer" class="badge bg-warning">30s</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Question card-->
+        <div class="quiz-container">
+            <div class="card question-card">
+                <div class="card-body">
+                    <!--Question category-->
+                    <div class="category-badge" id="categoryBadge">
+                        <i class="fas fa-tag"></i>
+                        <span>Category</span>
+                    </div>
+                    <!--question text-->
+                    <h4 class="card-title question-text" id="question">Loading question...</h4>
+                    <!--options-->
+                    <div class="options mt-4" id="options">
+                        <!-- options will be added by JS-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Result card (Hidden by Default, only show up when user done)-->
+        <div class="result-container d-none" id="resultCard">
+            <div class="card result-card">
+                <div class="card-body text-center">
+                    <!--result icon-->
+                    <div class="result-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <!--Complete-->
+                    <h3 class="result-title">Quiz Complete!</h3>
+                    <!--Display scores-->
+                    <div class="score-display">
+                        <div class="score-circle">
+                            <span id="score">0</span>
+                            <small>/10</small>
+                        </div>
+                    </div>
+                    <!--Detailed result-->
+                    <div class="result-stats mt-4">
+                        <div class="stat-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span id="correctAnswers">0 Correct</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-times-circle"></i>
+                            <span id="wrongAnswers">0 Wrong</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-percentage"></i>
+                            <span id="accuracy">0% Accuracy</span>
+                        </div>
+                    </div>
+                    <!--Restart quiz-->
+                    <button class="btn btn-primary btn-lg mt-4" onclick="restartQuiz()">
+                        <i class="fas fa-redo"></i> Try Again
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/auth.js"></script>
+    <script src="./assets/js/quiz.js"></script>
+</body>
+</html>

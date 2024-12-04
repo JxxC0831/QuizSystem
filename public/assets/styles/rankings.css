@@ -1,0 +1,183 @@
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+}
+
+.title-gradient {
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.leaderboard-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.podium {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.podium:hover {
+    transform: translateY(-10px);
+}
+
+.first-place {
+    margin-top: -20px;
+    background: linear-gradient(135deg, #FFD700 0%, #FFF5D4 100%);
+}
+ 
+.second-place {
+    background: linear-gradient(135deg, #C0C0C0 0%, #FFFFFF 100%);
+}
+
+.third-place {
+    background: linear-gradient(135deg, #CD7F32 0%, #FFC8A2 100%);
+}
+
+.medal {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin: 0 auto 1rem;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.first-place .medal {
+    background: #FFD700;
+    color: white;
+}
+
+.second-place .medal {
+    background: #C0C0C0;
+    color: white;
+}
+
+.third-place .medal {
+    background: #CD7F32;
+    color: white;
+}
+
+.crown {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #FFD700;
+    font-size: 2.5rem;
+    animation: float 2s ease-in-out infinite;
+}
+
+.trophy {
+    color: #666;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.user-info {
+    margin-top: 1rem;
+}
+
+.user-info h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.score {
+    color: #666;
+    margin: 0.5rem 0 0;
+}
+
+.table th {
+    border-top: none;
+    color: #666;
+    font-weight: 600;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+tr {
+    transition: transform 0.2s ease;
+}
+
+tr:hover {
+    transform: scale(1.01);
+    background-color: rgba(255,255,255,0.9);
+}
+
+.accuracy-badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.accuracy-high {
+    background: #28a745;
+    color: white;
+}
+
+.accuracy-medium {
+    background: #ffc107;
+    color: black;
+}
+
+.accuracy-low {
+    background: #dc3545;
+    color: white;
+}
+
+@keyframes float {
+    0% {
+        transform: translateX(-50%) translateY(0px);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    100% {
+        transform: translateX(-50%) translateY(0px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.podium {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.second-place {
+    animation-delay: 0.2s;
+}
+
+.first-place {
+    animation-delay: 0s;
+}
+
+.third-place {
+    animation-delay: 0.4s;
+} 

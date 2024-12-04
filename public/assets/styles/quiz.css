@@ -1,0 +1,235 @@
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+}
+
+/* Quiz Header: Includes progress bar and timer */
+.quiz-header {
+    max-width: 800px; 
+    margin: 0 auto 2rem;
+}
+
+/* Progress Bar Styling */
+.progress {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    .progress-bar {
+        background: linear-gradient(45deg, #2575fc, #6a11cb); /* Gradient progress */
+    }
+}
+ 
+/* Timer styling: Aligns timer with icon */
+.timer-container {
+    display: flex;
+
+    align-items: center;
+    gap: 0.5rem; 
+}
+
+.timer-container i {
+    color: #ffc107; /* Yellow color of timer*/
+}
+
+/* Main Quiz Container */
+.quiz-container {
+    max-width: 800px; 
+    margin: 0 auto; 
+    perspective: 1000px; 
+}
+
+/* Question Card Styling */
+.question-card {
+    background: rgba(255, 255, 255, 0.95); 
+    border: none;
+    border-radius: 15px; 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
+    transition: transform 0.3s ease; 
+    transform-style: preserve-3d; 
+}
+
+.question-card:hover {
+    transform: translateY(-5px); 
+}
+
+/* Category Badge (Question Category Tag) */
+.category-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(45deg, #11998e, #38ef7d); 
+    color: white;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem; 
+}
+
+.category-badge i {
+    margin-right: 0.5rem; 
+}
+
+/* Question Text Styling */
+.question-text {
+    font-size: 1.4rem; 
+    color: #2c3e50; 
+    margin-bottom: 2rem; 
+}
+
+/* Option Buttons for Answers */
+.option-btn {
+    width: 100%; 
+    padding: 1rem; 
+    margin: 0.5rem 0; 
+    border: 2px solid #e9ecef;
+    border-radius: 10px; 
+    background: white;
+    color: #2c3e50; 
+    font-size: 1.1rem; 
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden; 
+}
+
+.option-btn:hover {
+    transform: translateX(10px); 
+    background: #f8f9fa; 
+    border-color: #dee2e6;
+}
+
+.option-btn.correct {
+    background: linear-gradient(45deg, #11998e, #38ef7d); 
+    color: white;
+    border-color: transparent;
+}
+
+.option-btn.wrong {
+    background: linear-gradient(45deg, #eb3349, #f45c43); 
+    color: white;
+    border-color: transparent;
+}
+
+.option-btn.disabled {
+    pointer-events: none; 
+    opacity: 0.7; 
+}
+
+/* Result Card Styling */
+.result-card {
+    background: white;
+    border: none;
+    border-radius: 20px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+    max-width: 400px; 
+    margin: 0 auto; 
+    padding: 2rem; 
+    animation: fadeInUp 0.5s ease-out; 
+}
+
+.result-icon {
+    color: #FFD700; 
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.result-title {
+    color: #2c3e50;
+    font-size: 1.8rem; 
+    margin-bottom: 2rem; 
+}
+
+/* Score Display Circle */
+.score-display {
+    margin: 2rem 0;
+}
+
+.score-circle {
+    width: 120px;
+    height: 120px;
+    background: #4C6FFF; 
+    border-radius: 50%; 
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto; 
+    position: relative;
+    color: white;
+}
+
+.score-circle span {
+    font-size: 2.5rem; 
+    font-weight: bold;
+}
+
+/* Result Statistics */
+.result-stats {
+    display: flex;
+    justify-content: space-between; 
+    margin: 2rem 0;
+    padding: 0 1rem; 
+}
+
+.stat-item {
+    text-align: center; 
+    color: #6c757d; 
+    flex: 1; 
+}
+
+.stat-item i {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    display: block; 
+}
+
+.stat-item span {
+    font-size: 0.9rem;
+    display: block;
+}
+
+/* Try Again Button */
+.try-again-btn {
+    background: #4C6FFF; 
+    border: none;
+    border-radius: 25px;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    transition: transform 0.2s ease; /* Smooth hover effect */
+}
+
+.try-again-btn:hover {
+    transform: translateY(-2px); 
+    background: #3d5ce4;
+
+    .try-again-btn i {
+        margin-right: 0.5rem; 
+    }
+}
+
+/* Animation for Result Card */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Start below */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Finish at original position */
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .question-card {
+        margin: 0 1rem; /* Add side spacing on smaller screens */
+    }
+
+    .option-btn {
+        font-size: 1rem; /* Smaller font */
+        padding: 0.8rem; /* Adjust padding */
+    }
+
+    .question-text {
+        font-size: 1.2rem; /* Smaller font for text */
+    }
+}
