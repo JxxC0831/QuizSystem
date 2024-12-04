@@ -10,4 +10,3 @@ This is my CISC 3300 Final Project. I called it QuizSystem. This project is a dy
 - **Leaderboard**: Displays user rankings and performance metrics.
 - **Dynamic Content**: Fetches quiz questions from a third-party API(Open Trivia Database), ensuring fresh and diverse content.
 
-# QuizSystem
