@@ -4,41 +4,53 @@ namespace app\models;
 
 abstract class Model
 {
- 
-    public function findAll()
-    {
-        $query = "select * from $this->table";
-        return $this->query($query);
-    }
+    protected $table; // Table name must be set in child classes
 
     private function connect()
     {
-        $string = "mysql:hostname=" . DBHOST . ";dbname=" . DBNAME;
-        $con = new \PDO($string, DBUSER, DBPASS);
-        return $con;
+        try {
+            $string = "mysql:host=" . DBHOST . ";port=" . DBPORT . ";dbname=" . DBNAME;
+            $con = new \PDO($string, DBUSER, DBPASS);
+            $con->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            return $con;
+        } catch (\PDOException $e) {
+            error_log("Database connection error: " . $e->getMessage());
+            throw $e;
+        }
     }
 
     public function query($query, $data = [])
     {
-        $con = $this->connect();
-        $stm = $con->prepare($query);
-        $check = $stm->execute($data);
-        if ($check) {
-            $result = $stm->fetchAll(\PDO::FETCH_OBJ);
-            if (is_array($result) && count($result)) {
-                return $result;
+        try {
+            $con = $this->connect();
+            $stm = $con->prepare($query);
+            $check = $stm->execute($data);
+            if ($check) {
+                $result = $stm->fetchAll(\PDO::FETCH_OBJ);
+                if (is_array($result) && count($result)) {
+                    return $result;
+                }
             }
+        } catch (\PDOException $e) {
+            error_log("Query error: " . $e->getMessage());
+            throw $e;
         }
         return false;
+    }
+
+    public function findAll()
+    {
+        $query = "SELECT * FROM $this->table";
+        return $this->query($query);
     }
 
     public function insert($data)
     {
         $keys = array_keys($data);
         $columns = implode(',', $keys);
-        $values = implode(',:', $keys);
+        $placeholders = ':' . implode(', :', $keys);
 
-        $query = "INSERT INTO $this->table ($columns) VALUES (:$values)";
+        $query = "INSERT INTO $this->table ($columns) VALUES ($placeholders)";
         return $this->query($query, $data);
     }
 }
