@@ -9,7 +9,7 @@ abstract class Model
     private function connect()
     {
         try {
-            $string = "mysql:host=" . DBHOST . ";port=" . DBPORT . ";dbname=" . DBNAME;
+            $string = "mysql:host=" . DBHOST . ";dbname=" . DBNAME . ";port=" . DBPORT;
             $con = new \PDO($string, DBUSER, DBPASS);
             $con->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
             return $con;
